@@ -1,23 +1,32 @@
-// FUNKAR INTE HAHAHA
-// const productOne = document.querySelector("#products");
+const productOne = document.querySelector("#products");
 
-// displayProducts();
+const products = [
+  { id: "1", cost: 40, image: "bilder/brödprodukt1.webp" },
+  { id: "2", cost: 50, image: "bilder/brödprodukt2.webp" },
+  { id: "3", cost: 30, image: "bilder/brödprodukt3.webp" },
+  { id: "4", cost: 20, image: "bilder/brödprodukt4.webp" },
+];
 
-// function displayProducts() {
-//   const column = document.createElement("div");
-//   const image = document.createElement("img");
-//   const headerCost = document.createElement("h3");
-//   const addToCartBtn = document.createElement("button");
+displayProducts();
 
-//   column.classList.add("col", "text-center");
-//   image.src = "bilder/brödprodukt1.webp";
-//   image.alt = "bröd produkt 1";
-//   image.classList.add("image-fluid");
-//   headerCost.classList.add("mt-2");
-//   headerCost.innerText = "40 kr";
-//   addToCartBtn.type = "button";
-//   addToCartBtn.classList.add("btn", "btn-outline-info", "btn-lg", "mt-2");
-//   addToCartBtn.innerText = "Lägg till i varukorg";
+function displayProducts() {
+  for (const product of products) {
+    const column = document.createElement("div");
+    const image = document.createElement("img");
+    const headerCost = document.createElement("h3");
+    const addToCartBtn = document.createElement("button");
 
-//   column.append(image, headerCost, addToCartBtn);
-// }
+    column.classList.add("col", "text-center");
+    image.src = product.image;
+    image.alt = `bröd produkt ${product.id}`;
+    image.classList.add("img-fluid");
+    headerCost.classList.add("mt-2");
+    headerCost.innerText = `${product.cost} kr`;
+    addToCartBtn.type = "button";
+    addToCartBtn.classList.add("btn", "btn-outline-info", "btn-lg", "mt-2");
+    addToCartBtn.innerText = "Lägg till i varukorg";
+
+    column.append(image, headerCost, addToCartBtn);
+    productOne.appendChild(column);
+  }
+}
