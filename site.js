@@ -7,28 +7,28 @@ const products = [
     quantityInCart: 0,
     name: "Runt bröd",
     cost: 40,
-    image: "bilder/brödprodukt1.webp",
+    image: "bilder/brödProd1.webp",
   },
   {
     id: "2",
     quantityInCart: 0,
     name: "Längre bröd",
     cost: 50,
-    image: "bilder/brödprodukt2.webp",
+    image: "bilder/brödProd2.webp",
   },
   {
     id: "3",
     quantityInCart: 0,
     name: "Churros",
     cost: 30,
-    image: "bilder/brödprodukt3.webp",
+    image: "bilder/brödProd3.webp",
   },
   {
     id: "4",
     quantityInCart: 0,
     name: "Konstiga kanelbullar",
     cost: 20,
-    image: "bilder/brödprodukt4.webp",
+    image: "bilder/brödProd4.webp",
   },
 ];
 
@@ -47,8 +47,7 @@ function displayProducts() {
     image.src = product.image;
     image.alt = `Produkt ${product.id}`;
     image.classList.add("img-fluid");
-    image.setAttribute("height", "300px");
-    image.setAttribute("width", "300px");
+    image.setAttribute("width", "70%");
     headerName.classList.add("mt-2");
     headerName.innerText = product.name;
     headerCost.classList.add("mt-2");
@@ -98,8 +97,10 @@ function displayCart() {
   const duplicationProtectionParent = document.createElement("div");
   duplicationProtectionParent.id = "duplicated";
 
+  const row = document.createElement("div");
+  row.classList.add("row", "m-2");
   const firstColumn = document.createElement("div");
-  firstColumn.classList.add("col-4", "ms-4");
+  firstColumn.classList.add("col-3", "ms-4");
 
   for (const product of products) {
     if (product.quantityInCart == 0) continue;
@@ -121,6 +122,7 @@ function displayCart() {
   totalCostView.innerText = `Totalt ${totalCost} kr`;
   secondColumn.append(totalCostView);
 
-  duplicationProtectionParent.append(firstColumn, secondColumn);
+  row.append(firstColumn, secondColumn);
+  duplicationProtectionParent.append(row);
   cartManager.appendChild(duplicationProtectionParent);
 }
