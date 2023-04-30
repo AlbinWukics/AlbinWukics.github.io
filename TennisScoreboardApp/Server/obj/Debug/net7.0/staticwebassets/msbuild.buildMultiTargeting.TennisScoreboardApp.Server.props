@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\TennisScoreboardApp.Server.props" />
+</Project>

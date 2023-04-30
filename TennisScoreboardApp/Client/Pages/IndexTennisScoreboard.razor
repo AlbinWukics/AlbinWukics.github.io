@@ -1,0 +1,101 @@
+﻿@page "/"
+@using TennisScoreboardApp.Client.Services.Interfaces
+@inject ITennisScoreService _scoreService
+
+
+<div class="container-fluid bg-dark text-white vh-100">
+
+	<div class="row text-center pt-1">
+		<h3>Tennis Scoreboard</h3>
+	</div>
+
+	<div class="row" style="height: 40vw">
+
+		<div class="row align-content-end p-5">
+
+			<div class="row pt-5 pb-5 border border-end-0 border-start-0" @onclick="_scoreService.IncrementPlayerOnePointScore">
+
+				<div class="col text-end">
+					<h1>Home</h1>
+				</div>
+				<div class="col-auto">
+					<h2 class="text-secondary">player one</h2>
+				</div>
+				<div class="col-1 text-success text-end">
+					<h1>@_scoreService.GetPlayerOneSetScore()</h1>
+				</div>
+				<div class="col-1 text-warning text-center">
+					<h1>@_scoreService.GetPlayerOneGameScore()</h1>
+				</div>
+				<div class="col-2 text-start text-warning">
+					@if (_scoreService.ShowPlayerOnePointScore())
+					{
+						<h1>@_scoreService.GetPlayerOnePointScore()</h1>
+					}
+				</div>
+				<div class="col">
+					<button class="btn btn-outline-primary btn-lg">+</button>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="row align-content-around p-5">
+
+			<div class="row pt-5 pb-5 border border-end-0 border-start-0" @onclick="_scoreService.IncrementPlayerTwoPointScore">
+
+				<div class="col text-end">
+					<h1>Away</h1>
+				</div>
+				<div class="col-auto">
+					<h2 class="text-secondary">player two</h2>
+				</div>
+				<div class="col-1 text-success text-end">
+					<h1>@_scoreService.GetPlayerTwoSetScore()</h1>
+				</div>
+				<div class="col-1 text-warning text-center">
+					<h1>@_scoreService.GetPlayerTwoGameScore()</h1>
+				</div>
+				<div class="col-2 text-start text-warning">
+					@if (_scoreService.ShowPlayerTwoPointScore())
+					{
+						<h1>@_scoreService.GetPlayerTwoPointScore()</h1>
+					}
+				</div>
+				<div class="col">
+					<button class="btn btn-outline-primary btn-lg">+</button>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="row text-center" style="height: 9vw">
+		@if (_scoreService.IsPlayerOneVictorious())
+		{
+			<div class="row">
+				<h1>Winner winner chicken dinner</h1>
+			</div>
+			<div class="row">
+				<h3>Home - player one is victorious!</h3>
+			</div>
+		}
+		@if (_scoreService.IsPlayerTwoVictorious())
+		{
+			<div class="row">
+				<h1>Winner winner chicken dinner</h1>
+			</div>
+			<div class="row">
+				<h3>Away - player two is victorious</h3>
+			</div>
+		}
+	</div>
+
+	<div class="text-end">
+		<button class="btn btn-outline-secondary btn-lg" @onclick="_scoreService.Reset">Reset</button>
+	</div>
+
+</div>
