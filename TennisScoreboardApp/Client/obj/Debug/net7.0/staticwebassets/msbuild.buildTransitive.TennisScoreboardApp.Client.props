@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\TennisScoreboardApp.Client.props" />
-</Project>
